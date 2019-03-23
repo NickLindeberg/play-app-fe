@@ -1,0 +1,44 @@
+body {
+  background: url('https://d1490khl9dq1ow.cloudfront.net/Collections/vector-waveform-equalizer_Mky2L1Uu_L.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-color: black;
+  color: pink;
+  font-size: 50px;
+}
+
+nav {
+  opacity: 0.8;
+  height: 100px;
+}
+
+.nav-logo {
+  margin: auto;
+  width: 60%;
+  padding: 17px;
+  float: left;
+  display: inline-block;
+}
+
+form {
+  float: right;
+  padding: 10px;
+}
+
+input {
+  height: 50px;
+  width: 300px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 25px;
+}
+
+button {
+  height: 50px;
+  width: 150px;
+  background-color: blue;
+  border-radius: 10px;
+  color: white;
+  font-size: 25px;
+  border: 1px solid lightblue;
+}
