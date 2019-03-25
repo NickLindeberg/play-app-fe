@@ -1,6 +1,6 @@
 PlayPlay Front End
 
-Please see * [Back-End](https://github.com/abroberts5/play-app) for endpoint information!
+Please see [Back-End](https://github.com/abroberts5/play-app) for endpoint information!
 
 ## Built With
 
