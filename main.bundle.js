@@ -44,8 +44,37 @@
 /* 0 */
 /***/ (function(module, exports) {
 
-	// This file is in the entry point in your webpack config.
 	"use strict";
+
+	// This file is in the entry point in your webpack config.
+
+	function artistSearch() {
+	  var searchArtist = document.getElementById("artistSrch").value;
+	  $.ajax({
+	    url: "http://api.musixmatch.com/ws/1.1/track.search?q_artist=" + searchArtist + "&page=1&apikey=952ab089b18c19cc9bdd1658340605ed&s_track_rating=desc",
+	    type: "GET",
+	    data: {
+	      format: 'jsonp',
+	      callback: 'jsonp_cb'
+	    },
+	    dataType: "jsonp",
+	    jsonpCallback: 'jsonp_cb',
+	    success: function success(details) {
+	      var text, len, i;
+	      var trackDetails = details["message"]["body"]["track_list"];
+	      len = trackDetails.length;
+	      text = "<div class='result-box'>";
+	      for (i = 0; i < len; i++) {
+	        var indTrack = trackDetails[i]["track"];
+	        text += "<div class='each-track'>" + indTrack["track_name"] + "<br>" + "Track Rating: " + indTrack["track_rating"] + "</div>";
+	      }
+	      text += "</div>";
+	      document.getElementById("tracks").innerHTML = text;
+	    }
+	  });
+	}
+
+	window.artistSearch = artistSearch;
 
 /***/ })
 /******/ ]);
