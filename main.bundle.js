@@ -51,7 +51,7 @@
 	function artistSearch() {
 	  var searchArtist = document.getElementById("artistSrch").value;
 	  $.ajax({
-	    url: "http://api.musixmatch.com/ws/1.1/track.search?q_artist=" + searchArtist + "&page=1&apikey=952ab089b18c19cc9bdd1658340605ed&s_track_rating=desc",
+	    url: "http://api.musixmatch.com/ws/1.1/track.search?q_artist=" + searchArtist + "&page=1&apikey={api_key_aqui}&s_track_rating=desc",
 	    type: "GET",
 	    data: {
 	      format: 'jsonp',
