@@ -67,3 +67,7 @@ ul {
 .fav{
   float: right;
 }
+
+.clicked {
+  background-color: green;
+}
