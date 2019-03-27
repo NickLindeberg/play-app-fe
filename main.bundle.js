@@ -50,7 +50,7 @@
 	function artistSearch() {
 	  var searchArtist = document.getElementById("artistSrch").value;
 	  $.ajax({
-	    url: "http://api.musixmatch.com/ws/1.1/track.search?q_artist=" + searchArtist + "&page=1&apikey={api_key_aqui}&s_track_rating=desc",
+	    url: "http://api.musixmatch.com/ws/1.1/track.search?q_artist=" + searchArtist + "&page=1&apikey={apikey_aqui}&s_track_rating=desc",
 	    type: "GET",
 	    data: {
 	      format: 'jsonp',
@@ -65,18 +65,39 @@
 	      text = "<div class='result-box'>";
 	      for (i = 0; i < len; i++) {
 	        var indTrack = trackDetails[i]["track"];
-	        text += "<div class='each-track'>" + indTrack["track_name"] + "<br>" + "Track Rating: " + indTrack["track_rating"] + ("<button class='fav' id='fav" + i + "' onclick='saveFavorite(fav" + i + ")'>Favorite</button>") + "</div>";
+	        var trkName = indTrack["track_name"];
+	        var trkRating = indTrack["track_rating"];
+	        text += "<div class='each-track'>" + trkName + "<br>" + "Track Rating: " + trkRating + ("<button class='fav' id='fav" + i + "' onclick='saveFavorite(fav" + i + ")'>Favorite</button>") + "</div>";
 	      }
 	      text += "</div>";
 	      document.getElementById("tracks").innerHTML = text;
+
+	      giveEvents(trackDetails);
 	    }
 	  });
 	}
 
-	document.getElementById('fav').addEventListener("click", saveFavorite);
+	function giveEvents(details) {
+	  var btn = document.getElementsByClassName("fav");
+	  for (var i = 0; i < btn.length; i++) {
+	    btn[i].onclick = function (n) {
+	      return function () {
+	        saveFavorite(btn[n]);
+	        debugger;
+	        alert(details[n]["track"]["track_name"] + " added to favorites!");
+	        $.post("https://play-app-nicknaaron.herokuapp.com/api/v1/favorites", {
+	          song_name: details[n]["track"]["track_name"],
+	          artist_name: details[n]["track"]["artist_name"],
+	          rating: details[n]["track"]["track_rating"],
+	          genre: details[n]["track"]["primary_genres"]["music_genre_list"][0]["music_genre"]["music_genre_name"]
+	        });
+	      };
+	    }(i);
+	  };
+	}
 
 	function saveFavorite(fav) {
-	  fav.classList.toggle('clicked');
+	  fav.classList.add('clicked');
 	}
 
 	window.artistSearch = artistSearch;
