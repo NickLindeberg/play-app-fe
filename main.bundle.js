@@ -50,7 +50,7 @@
 	function artistSearch() {
 	  var searchArtist = document.getElementById("artistSrch").value;
 	  $.ajax({
-	    url: "http://api.musixmatch.com/ws/1.1/track.search?q_artist=" + searchArtist + "&page=1&apikey={apikey_aqui}&s_track_rating=desc",
+	    url: "http://api.musixmatch.com/ws/1.1/track.search?q_artist=" + searchArtist + "&page=1&apikey=6176034f724e926fe5a04c1a915df7ec&s_track_rating=desc",
 	    type: "GET",
 	    data: {
 	      format: 'jsonp',
@@ -62,7 +62,7 @@
 	      var text, len, i;
 	      var trackDetails = details["message"]["body"]["track_list"];
 	      len = trackDetails.length;
-	      text = "<div class='result-box'>";
+	      text = "<div class='song-result'>";
 	      for (i = 0; i < len; i++) {
 	        var indTrack = trackDetails[i]["track"];
 	        var trkName = indTrack["track_name"];
@@ -83,7 +83,6 @@
 	    btn[i].onclick = function (n) {
 	      return function () {
 	        saveFavorite(btn[n]);
-	        debugger;
 	        alert(details[n]["track"]["track_name"] + " added to favorites!");
 	        $.post("https://play-app-nicknaaron.herokuapp.com/api/v1/favorites", {
 	          song_name: details[n]["track"]["track_name"],
@@ -100,8 +99,31 @@
 	  fav.classList.add('clicked');
 	}
 
+	function showFavorites() {
+	  $.get('https://play-app-nicknaaron.herokuapp.com/api/v1/favorites').then(function (details) {
+	    var text, len, i;
+	    var tracks = details;
+	    len = tracks.length;
+	    text = "<div class='favorite-results'>";
+	    for (i = 0; i < len; i++) {
+	      var indTrack = tracks[i];
+	      var trkName = indTrack["song_name"];
+	      var trkArtist = indTrack["artist_name"];
+	      var trkGenre = indTrack["genre"];
+	      var trkRating = indTrack["rating"];
+	      // debugger;
+	      text += "<div class='each-song'>" + trkName + " Artist: " + trkArtist + "<br>" + "Genre: " + trkGenre + " Track Rating: " + trkRating + "</div>";
+	    }
+	    text += "</div>";
+	    document.getElementById("songs").innerHTML = text;
+	  });
+	}
+
+	showFavorites();
+
 	window.artistSearch = artistSearch;
 	window.saveFavorite = saveFavorite;
+	window.showFavorites = showFavorites;
 
 /***/ })
 /******/ ]);
