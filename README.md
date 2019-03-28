@@ -5,6 +5,16 @@
 A full-stack application, built in two parts. The first is the BackEnd creating an API in Express using Musixmatch's API to 
 Respond to a FrontEnd in JavaScript. The full application allows users will utilize to track favorite songs and playlists.
 
+## Setup
+* Clone this repo
+```
+git clone git@github.com:NickLindeberg/play-app-fe.git
+```
+
+Retrieve a MusicMatch apikey to use in the body of the index.js file. click here:
+[https://developer.musixmatch.com/](https://developer.musixmatch.com/)
+* Insert in the searchArtist method in /lib/index.js where it shows {apikey}, replace whole param with key
+
 ## Back-End
 
 Please see [Back-End](https://github.com/abroberts5/play-app) for endpoint information!
