@@ -1,4 +1,11 @@
-PlayPlay Front End
+# PlayPlay Front End
+
+## About the Project
+
+A full-stack application, built in two parts. The first is the BackEnd creating an API in Express using Musixmatch's API to 
+Respond to a FrontEnd in JavaScript. The full application allows users will utilize to track favorite songs and playlists.
+
+## Back-End
 
 Please see [Back-End](https://github.com/abroberts5/play-app) for endpoint information!
 
@@ -10,3 +17,17 @@ Please see [Back-End](https://github.com/abroberts5/play-app) for endpoint infor
 * [Mocha](https://mochajs.org/)
 * [Chai](https://chaijs.com/)
 
+## Contributors
+
+* Nick Lindeberg [https://github.com/nicklindeberg](https://github.com/nicklindeberg)
+* J Aaron Brooks Roberts  [https://github.com/abroberts5](https://github.com/abroberts5)
+
+## Screenshots
+* Search Results from search bar:
+![Play Search Results](https://user-images.githubusercontent.com/40776966/55121056-3d105680-50be-11e9-970c-aef3251863ce.png)
+
+* Favorite Results after clicking button:
+![Play Favorite Result](https://user-images.githubusercontent.com/40776966/55121086-7052e580-50be-11e9-8bcd-60c8f46c2f72.png)
+
+* Updated Favorites:
+![Play Updated Playlist](https://user-images.githubusercontent.com/40776966/55121112-8bbdf080-50be-11e9-98fa-7203ec58d31a.png)
